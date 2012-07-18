@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'rdiscount'
 require 'ostruct'
 require 'yaml'
 require 'time'
@@ -28,5 +29,4 @@ class Blog < Sinatra::Base
     erb :index
   end
   
-  run!
 end
