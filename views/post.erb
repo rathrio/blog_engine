@@ -1,11 +1,15 @@
 <article>
   <header>
-    <h1>
+    <h2>
       <a href="<%= url(article.slug) %>"><%= article.title %></a>
-    </h1>
-    <time class="timeago" datetime="<%= article.date.xmlschema %>">
-      <%= article.date.strftime "%Y/%m/%d/" %>
-    </time>
+    </h2>
+    <p id="article-meta">
+      posted
+      <time class="timeago" datetime="<%= article.date.xmlschema %>">
+        <%= article.date.strftime "%Y/%m/%d/" %>
+      </time>
+      by <%= article.author %>
+    </p>
   </header>
   <section class="content">
     <%= markdown article.content %>
