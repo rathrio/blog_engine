@@ -13,12 +13,11 @@ class Blog < Sinatra::Base
   
   Dir.glob "#{root}/articles/*.md" do |file|
     article = file_to_article file
+    articles << article
     
     get "/#{article.slug}" do
       erb :post, :locals => { :article => article }
     end
-    
-    articles << article
   end
   
   articles.sort_by! { |article| article.date }
