@@ -1,22 +1,18 @@
 require 'sinatra/base'
+require 'article_parser'
 require 'github_hook'
 require 'rdiscount'
-require 'ostruct'
-require 'yaml'
-require 'time'
 
 class Blog < Sinatra::Base
-  use GithubHook
+  use GithubHook if settings.production?
+  
+  extend ArticleParser
   
   set :root, File.expand_path('../../', __FILE__)
   set :articles, []
   
   Dir.glob "#{root}/articles/*.md" do |file|
-    meta, content   = File.read(file).split("\n\n", 2)
-    article         = OpenStruct.new YAML.load(meta)
-    article.date    = Time.parse article.date.to_s
-    article.content = content
-    article.slug    = File.basename(file, '.md')
+    article = file_to_article file
     
     get "/#{article.slug}" do
       erb :post, :locals => { :article => article }
