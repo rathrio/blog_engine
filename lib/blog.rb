@@ -3,16 +3,20 @@ require 'article_parser'
 require 'github_hook'
 require 'rdiscount'
 
-class Blog < Sinatra::Base
-  use GithubHook if settings.production?
+class Blog < Sinatra::Base  
+  include ArticleParser
   
-  extend ArticleParser
+  use GithubHook if production?
+  
+  configure :production, :development do
+    enable :logging
+  end
   
   set :root, File.expand_path('../../', __FILE__)
   set :articles, []
   
-  Dir.glob "#{root}/articles/*.md" do |file|
-    article = file_to_article file
+  Dir.glob "#{root}/articles/*.md" do |filename|
+    article = file_to_article filename
     articles << article
     
     get "/#{article.slug}" do
@@ -25,6 +29,16 @@ class Blog < Sinatra::Base
   
   get '/' do
     erb :index
+  end
+  
+  get '/new' do
+    erb :new
+  end
+  
+  post '/create' do
+    article = write_article params[:article]
+    settings.articles << article
+    redirect '/'
   end
   
 end
