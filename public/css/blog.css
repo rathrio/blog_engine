@@ -2,6 +2,7 @@ h1 { font-size: 40px; }
 h2 { font-size: 32px; }
 h3 { font-size: 25px; }
 h4 { font-size: 20px; }
+p  { font-size: 17px; }
 
 a {
 	text-decoration: none;
@@ -25,15 +26,11 @@ header a:hover {
 
 #container_navi {
 	background-color: black;
-	text-align: center;
-	height: 50px; }
+	text-align: center; }
 	#container_navi a {
 		color: #C8C8C8; }
 	#container_navi a:hover {
 		color: #FFF; }
-		#container_navi a h1 {
-			padding-top: 2px; }
-	
 
 #container_content {
 	width: 700px;
