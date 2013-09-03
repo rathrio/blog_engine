@@ -11,6 +11,8 @@ class Blog < Sinatra::Base
 
   set :root, File.expand_path('../../', __FILE__)
   set :articles, []
+  set :markdown, :renderer => HTMLwithPygments,
+    :fenced_code_blocks => true, :layout_engine => :erb
 
   Dir.glob "#{root}/articles/*.md" do |filename|
     article = file_to_article filename
@@ -25,8 +27,6 @@ class Blog < Sinatra::Base
   articles.reverse!
 
   get '/' do
-    renderer = Redcarpet::Markdown.new(HTMLwithPygments, :fenced_code_blocks => true)
-    renderer.render File.read("#{settings.root}/articles/1378239180.md")
-    #erb :index
+    erb :index
   end
 end

@@ -17,7 +17,7 @@
 */
 
 html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
 small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -108,8 +108,8 @@ sub { bottom: -0.25em; }
 
 pre {
 	/* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
-	white-space: pre; white-space: pre-wrap; white-space: pre-line; word-wrap: break-word;
-	padding: 15px;
+	/* white-space: pre; white-space: pre-wrap; white-space: pre-line; word-wrap: break-word; */
+	/* padding: 10px; */
 }
 
 textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
