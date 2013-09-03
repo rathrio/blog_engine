@@ -1,11 +1,9 @@
 require 'sinatra/base'
 require 'article_parser'
-require 'glorify'
+require 'html_with_pygments'
 
 class Blog < Sinatra::Base
   include ArticleParser
-
-  register Sinatra::Glorify
 
   configure :production, :development do
     enable :logging
@@ -27,6 +25,8 @@ class Blog < Sinatra::Base
   articles.reverse!
 
   get '/' do
-    erb :index
+    renderer = Redcarpet::Markdown.new(HTMLwithPygments, :fenced_code_blocks => true)
+    renderer.render File.read("#{settings.root}/articles/1378239180.md")
+    #erb :index
   end
 end

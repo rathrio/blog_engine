@@ -12,6 +12,6 @@
     </p>
   </header>
   <section class="content">
-    <%= markdown article.content %>
+    <%= Redcarpet::Markdown.new(HTMLwithPygments, :fenced_code_blocks => true).render article.content %>
   </section>
 </article>
