@@ -1,3 +1,0 @@
-[submodule "public/css/pygments-css"]
-	path = public/css/pygments-css
-	url = git@github.com:richleland/pygments-css.git
