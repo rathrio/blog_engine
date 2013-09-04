@@ -1,10 +1,8 @@
 require 'sinatra/base'
-require 'article_parser'
+require 'article'
 require 'html_with_pygments'
 
 class Blog < Sinatra::Base
-  include ArticleParser
-
   configure :production, :development do
     enable :logging
   end
@@ -15,10 +13,10 @@ class Blog < Sinatra::Base
     :fenced_code_blocks => true, :layout_engine => :erb
 
   Dir.glob "#{root}/articles/*.md" do |filename|
-    article = file_to_article filename
+    article = Article.from_file filename
     articles << article
 
-    get "/#{article.slug}" do
+    get "/articles/#{article.slug}" do
       erb :post, :locals => { :article => article }
     end
   end

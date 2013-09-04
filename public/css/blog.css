@@ -2,7 +2,8 @@ h1 { font-size: 40px; }
 h2 { font-size: 32px; }
 h3 { font-size: 25px; }
 h4 { font-size: 20px; }
-p  { font-size: 17px; }
+p, ol, ul, li { font-size: 17px; }
+
 
 a {
 	text-decoration: none;
