@@ -2,7 +2,7 @@ title: When to use Rails Engines
 author: radi
 date: 2013-09-04
 
-![The disease](http://www.clker.com/cliparts/2/d/7/9/11971183911319983970ryanlerch_Steam_Train_Engine.svg.hi.png "The disease")
+![The disease](http://clipartist.info/clipart/pligg/COLOURINGBOOK.ORG/ryanlerch_steam_train_engine-1331px.png "The disease")
 
 Some of us at [Fadendaten][0] recently started to fancy some heavy use of
 [Rails Engines][1], so we decided to write up some guidelines about when, or
