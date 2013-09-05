@@ -1,4 +1,5 @@
-<% settings.articles.each do |article| %>
+<% articles ||= settings.articles %>
+<% articles.each do |article| %>
   <%= erb :post, :locals => { :article => article } %>
   <hr/>
 <% end %>
