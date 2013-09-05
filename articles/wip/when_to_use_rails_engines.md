@@ -8,14 +8,16 @@ Some of us at [Fadendaten][0] recently started to fancy some heavy use of
 [Rails Engines][1], so we decided to write up some guidelines about when, or
 especially when __not__ to use Rails Engines.
 
-Use them:
+Consider using a Rails Engine when:
 
-* 
+1. You have to share at least two of the following components: Models,
+   Controllers or Views.
 
+2. The Engine can be extracted from existing code.
 
-Do not use them:
+Good Engines, like good web frameworks, do not
 
-* 
+3. The Engine will be used in at least two of your existing Applications.
 
 
 [0]: http://www.fadendaten.ch

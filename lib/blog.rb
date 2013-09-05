@@ -8,8 +8,9 @@ class Blog < Sinatra::Base
   end
 
   set :root, File.expand_path('../../', __FILE__)
-  set :articles, []
+  set :articles,     []
   set :wip_articles, []
+  set :archive,      []
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
