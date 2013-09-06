@@ -4,7 +4,7 @@ date: 2013-09-05
 
 ![The disease](http://clipartist.info/clipart/pligg/COLOURINGBOOK.ORG/ryanlerch_steam_train_engine-1331px.png "The disease")
 
-Some of us at [Fadendaten][0] recently started to fancy some heavy use of
+At [Fadendaten][0], we recently started to fancy some heavy use of
 [Rails Engines][1], so we decided to write up some guidelines about when, or
 especially when __not__ to use them.
 

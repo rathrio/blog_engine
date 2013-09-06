@@ -38,4 +38,8 @@ class Blog < Sinatra::Base
   get '/wip' do
     erb :index, :locals => { :articles => settings.wip_articles }
   end
+
+  not_found do
+    erb :'404'
+  end
 end
