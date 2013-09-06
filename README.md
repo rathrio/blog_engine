@@ -4,12 +4,10 @@ based on the basic example from this excellent [book](http://shop.oreilly.com/pr
 
 ## Installation
 Execute `$ bundle install` to install all required gems and their dependencies.
+To fetch all [articles](https://github.com/rathrio/articles) execute `$ git submodule init` and
+`$ git submodule update`.
 
 ## Running
 Execute `$ shotgun` to start up a the webserver. Visit `localhost:9393` in your browser to view the blog.
 
-## Adding Articles
-Simply add another markdown file to the articles/ directory and you're good to go.
-To automatically generate a timestamped article template, execute `$ ruby scripts/generate_article.rb`
-This feature is WIP.
 
