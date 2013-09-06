@@ -4,7 +4,7 @@ based on the basic example from this excellent [book](http://shop.oreilly.com/pr
 
 ## Installation
 Execute `$ bundle install` to install all required gems and their dependencies.
-To fetch all the articles execute `$ git submodule init` and
+To fetch all [articles](https://github.com/rathrio/articles) execute `$ git submodule init` and
 `$ git submodule update`.
 
 ## Running
