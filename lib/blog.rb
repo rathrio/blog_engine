@@ -1,8 +1,11 @@
 require 'sinatra/base'
 require 'article'
 require 'html_with_pygments'
+require 'github_hook'
 
 class Blog < Sinatra::Base
+  use GithubHook
+
   configure :production, :development do
     enable :logging
   end
