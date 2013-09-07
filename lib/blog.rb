@@ -1,8 +1,11 @@
 require 'sinatra/base'
 require 'article'
 require 'html_with_pygments'
+require 'heroku_hook'
 
 class Blog < Sinatra::Base
+  use HerokuHook if production?
+
   configure :production, :development do
     enable :logging
   end
