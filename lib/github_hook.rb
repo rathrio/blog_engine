@@ -1,5 +1,6 @@
 require 'sinatra/base'
 
+# Not in use as long as blog is hosted on heroku.
 class GithubHook < Sinatra::Base
   set(:autopull) { production? }
 
