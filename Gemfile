@@ -6,3 +6,7 @@ gem "shotgun", "~> 0.9"
 gem "thin", "~> 1.5.1"
 gem "redcarpet", "~> 3.0.0"
 gem "pygments.rb", "~> 0.5.2"
+
+group :development do
+  gem "tux", "~> 0.3.0"
+end

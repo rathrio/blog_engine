@@ -13,7 +13,7 @@ class Blog < Sinatra::Base
   set :root, File.expand_path('../../', __FILE__)
   set :articles,     []
   set :wip_articles, []
-  set :archive,      []
+  set :authors,      []
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
@@ -21,6 +21,7 @@ class Blog < Sinatra::Base
     Dir.glob path do |filename|
       article = Article.from_file filename
       articles << article
+      authors << article.author_slug
 
       get "/articles/#{article.slug}" do
         erb :post, :locals => { :article => article }
@@ -33,6 +34,14 @@ class Blog < Sinatra::Base
 
   load_into articles, "#{root}/articles/*.md"
   load_into wip_articles, "#{root}/articles/wip/*.md"
+  authors.uniq!
+
+  authors.each do |author|
+    get "/authors/#{author}" do
+      articles = settings.articles.select { |a| a.author == author }
+      erb :index, :locals => { :articles => articles }
+    end
+  end
 
   get '/' do
     erb :index

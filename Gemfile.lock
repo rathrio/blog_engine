@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bond (0.4.3)
     daemons (1.1.9)
     eventmachine (1.0.3)
     posix-spawn (0.3.6)
@@ -10,7 +11,17 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
     redcarpet (3.0.0)
+    ripl (0.7.0)
+      bond (~> 0.4.2)
+    ripl-multi_line (0.3.1)
+      ripl (>= 0.3.6)
+    ripl-rack (0.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
+      ripl (>= 0.3.5)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.3)
@@ -22,6 +33,11 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.4.1)
+    tux (0.3.0)
+      ripl (>= 0.3.5)
+      ripl-multi_line (>= 0.2.4)
+      ripl-rack (>= 0.2.0)
+      sinatra (>= 1.2.1)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -33,3 +49,4 @@ DEPENDENCIES
   shotgun (~> 0.9)
   sinatra (~> 1.4.3)
   thin (~> 1.5.1)
+  tux (~> 0.3.0)

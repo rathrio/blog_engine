@@ -11,4 +11,9 @@ class Article < OpenStruct
     article.slug    = File.basename(filename, '.md')
     article
   end
+
+  def author_slug
+    # TODO: #underscore
+    author.downcase
+  end
 end

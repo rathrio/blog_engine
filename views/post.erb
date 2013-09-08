@@ -8,7 +8,7 @@
       <time class="timeago" datetime="<%= article.date.xmlschema %>">
         <%= article.date.strftime "%Y/%m/%d/" %>
       </time>
-      by <%= article.author %>
+      by <a href="<%= url("authors/#{article.author_slug}") %>"><%= article.author %></a>
     </p>
   </header>
   <section class="content">
