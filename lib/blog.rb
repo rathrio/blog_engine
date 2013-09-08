@@ -1,10 +1,10 @@
 require 'sinatra/base'
 require 'article'
 require 'html_with_pygments'
-require 'heroku_hook'
+require 'cache'
 
 class Blog < Sinatra::Base
-  use HerokuHook if production?
+  use Cache if production?
 
   configure :production, :development do
     enable :logging
