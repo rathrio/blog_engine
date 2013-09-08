@@ -4,7 +4,7 @@ require 'html_with_pygments'
 require 'cache'
 
 class Blog < Sinatra::Base
-  use Cache if production?
+  use Cache
 
   configure :production, :development do
     enable :logging
