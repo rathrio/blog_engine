@@ -11,9 +11,10 @@ class Blog < Sinatra::Base
   end
 
   set :root, File.expand_path('../../', __FILE__)
-  set :articles,     []
-  set :wip_articles, []
-  set :authors,      []
+  set :articles,      []
+  set :wip_articles,  []
+  set :authors,       []
+  set :tags,          []
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
@@ -23,7 +24,8 @@ class Blog < Sinatra::Base
     Dir.glob path do |filename|
       article = Article.from_file filename
       articles << article
-      authors << article.author_slug
+      authors  << article.author_slug
+      tags.push *article.tags.to_a
 
       # Generating routes for single articles.
       # e.g. /articles/how_i_met_fuetzgue
@@ -39,6 +41,7 @@ class Blog < Sinatra::Base
   load_into articles, "#{root}/articles/*.md"
   load_into wip_articles, "#{root}/articles/wip/*.md"
   authors.uniq!
+  tags.uniq!
 
   # Generating routes for every author. The respone page will display a list of
   # articles written by that author.
@@ -46,6 +49,16 @@ class Blog < Sinatra::Base
   authors.each do |author|
     get "/authors/#{author}" do
       articles = settings.articles.select { |a| a.author == author }
+      erb :index, :locals => { :articles => articles }
+    end
+  end
+
+  # Generating routes for every tag. The respone page will display a list of
+  # articles tagged with that tag.
+  # e.g. /tags/english
+  tags.each do |tag|
+    get "/tags/#{tag}" do
+      articles = settings.articles.select { |a| a.tags.to_a.include? tag }
       erb :index, :locals => { :articles => articles }
     end
   end
@@ -62,5 +75,14 @@ class Blog < Sinatra::Base
 
   not_found do
     erb :'404'
+  end
+
+  helpers do
+    def linkified_tags(tags)
+      tags.to_a.map do |tag|
+        tag_path = url("tags/#{tag}")
+        bla = %Q(<a href="#{tag_path}">#{tag}</a>)
+      end.join ', '
+    end
   end
 end

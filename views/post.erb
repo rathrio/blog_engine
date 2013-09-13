@@ -9,6 +9,7 @@
         <%= article.date.strftime "%Y/%m/%d/" %>
       </time>
       by <a href="<%= url("authors/#{article.author_slug}") %>"><%= article.author %></a>
+      about <%= linkified_tags article.tags %>
     </p>
   </header>
   <section class="content">
