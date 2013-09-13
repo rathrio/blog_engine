@@ -78,6 +78,16 @@ class Blog < Sinatra::Base
   end
 
   helpers do
+    # Converts a TagList to a comma separated string with the tags replaced
+    # by a link pointing to the tags path.
+    #
+    # @example
+    #   tags = TagList.new "ruby, rails"
+    #
+    #   # Probably in a view:
+    #   linkified_tags tags
+    #   #=> "<a href=\"http://localhost:9393/tags/ruby\">ruby</a>,
+    #        <a href=\"http://localhost:9393/tags/rails\">rails</a>"
     def linkified_tags(tags)
       tags.to_a.map do |tag|
         tag_path = url("tags/#{tag}")
