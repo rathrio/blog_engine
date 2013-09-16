@@ -48,9 +48,9 @@ header a:hover {
 	background-color: black;
 	text-align: center; }
 	#container_navi a {
-		color: #C8C8C8; }
+		color: #ecebeb; }
 	#container_navi a:hover {
-		color: #FFF; }
+		color: #fff; }
 
 #container_content {
 	width: 700px;
