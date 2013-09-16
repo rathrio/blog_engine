@@ -109,7 +109,7 @@ sub { bottom: -0.25em; }
 pre {
 	/* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
 	/* white-space: pre; white-space: pre-wrap; white-space: pre-line; word-wrap: break-word; */
-	/* padding: 10px; */
+	padding: 10px;
 }
 
 textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
