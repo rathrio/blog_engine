@@ -3,7 +3,11 @@ h2 { font-size: 32px; }
 h3 { font-size: 25px; }
 h4 { font-size: 20px; }
 p, ol, ul, li { font-size: 17px; }
-pre { font-size: 14px; }
+
+pre {
+  font-size: 14px;
+  overflow: auto;
+}
 
 a {
 	text-decoration: none;
