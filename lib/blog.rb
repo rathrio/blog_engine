@@ -63,8 +63,10 @@ class Blog < Sinatra::Base
     end
   end
 
-  get '/' do
-    erb :index
+  %w(/ /articles).each do |route|
+    get route do
+      erb :index
+    end
   end
 
   # Generates a Work In Progress route. All articles that are placed in the
