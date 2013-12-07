@@ -1,18 +1,18 @@
 <article>
   <header>
     <h2>
-      <a href="<%= url("articles/#{article.slug}") %>"><%= article.title %></a>
+      <a href="<%= url(post_path post) %>"><%= post.title %></a>
     </h2>
-    <p id="article-meta">
+    <p id="post-meta">
       posted
-      <time class="timeago" datetime="<%= article.date.xmlschema %>">
-        <%= article.date.strftime "%Y/%m/%d/" %>
+      <time class="timeago" datetime="<%= post.date.xmlschema %>">
+        <%= post.date.strftime "%Y/%m/%d/" %>
       </time>
-      by <a href="<%= url("authors/#{article.author_slug}") %>"><%= article.author %></a>
-      about <%= linkified_tags article.tags %>
+      by <a href="<%= url("authors/#{post.author_slug}") %>"><%= post.author %></a>
+      about <%= linkified_tags post.tags %>
     </p>
   </header>
   <section class="content">
-    <%= markdown article.content %>
+    <%= markdown post.content %>
   </section>
 </article>
