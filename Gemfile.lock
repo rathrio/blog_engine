@@ -48,6 +48,7 @@ GEM
       ripl-rack (>= 0.2.0)
       sinatra (>= 1.2.1)
     yajl-ruby (1.1.0)
+    yard (0.8.7.3)
 
 PLATFORMS
   ruby
@@ -60,3 +61,4 @@ DEPENDENCIES
   sinatra (~> 1.4.4)
   thin (~> 1.6.1)
   tux (~> 0.3.0)
+  yard (~> 0.8.7.3)
