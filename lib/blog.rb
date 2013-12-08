@@ -12,13 +12,8 @@ class Blog < Sinatra::Base
 
   set :root, File.expand_path('../../', __FILE__)
 
-  # Posts
-  set :articles, []
-  set :notes,    []
-  set :recipes,  []
-
-  set :authors,  []
-  set :tags,     []
+  set :authors, []
+  set :tags,    []
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
@@ -28,13 +23,13 @@ class Blog < Sinatra::Base
     "/#{post.class.to_s.downcase}s/#{post.slug}"
   end
 
-  def self.load_into(what, path)
+  # Parses all markdown files from given path, converts them to `Post`s and
+  # generates a `GET` route to display the post.
+  def self.parse_and_define_routes_for(what, path)
     post_class = Object.const_get what.to_s.chop.capitalize
-    storage = send(what)
-
     Dir.glob path do |filename|
       post = post_class.from_file filename
-      storage << post
+      post.publish
       authors << post.author_slug
       tags.push *post.tags.to_a
 
@@ -44,12 +39,11 @@ class Blog < Sinatra::Base
         erb :post, :locals => { :post => post }
       end
     end
-
   end
 
-  load_into :articles, "#{root}/articles/*.md"
-  load_into :notes,    "#{root}/notes/*.md"
-  load_into :recipes,  "#{root}/recipes/*.md"
+  parse_and_define_routes_for :articles, "#{root}/articles/*.md"
+  parse_and_define_routes_for :notes,    "#{root}/notes/*.md"
+  parse_and_define_routes_for :recipes,  "#{root}/recipes/*.md"
 
   authors.uniq!
   tags.uniq!
@@ -59,7 +53,7 @@ class Blog < Sinatra::Base
   # e.g. /authors/radi
   authors.each do |author|
     get "/authors/#{author}" do
-      articles = settings.articles.select { |a| a.author == author }
+      articles = Article.by_author author
       erb :index, :locals => { :posts => articles }
     end
   end
@@ -69,7 +63,7 @@ class Blog < Sinatra::Base
   # e.g. /tags/english
   tags.each do |tag|
     get "/tags/#{tag}" do
-      articles = settings.articles.select { |a| a.tags.to_a.include? tag }
+      articles = Article.tagged tag
       erb :index, :locals => { :posts => articles }
     end
   end
@@ -82,11 +76,11 @@ class Blog < Sinatra::Base
   end
 
   get '/recipes' do
-    erb :index, :locals => { :posts => settings.recipes }
+    erb :index, :locals => { :posts => Recipe.all }
   end
 
   get '/notes' do
-    erb :index, :locals => { :posts => settings.notes }
+    erb :index, :locals => { :posts => Note.all }
   end
 
 
@@ -115,6 +109,5 @@ class Blog < Sinatra::Base
     def post_path(post)
       Blog.post_path post
     end
-
   end
 end

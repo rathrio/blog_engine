@@ -16,6 +16,22 @@ class Post < OpenStruct
     post.tags        = TagList(post.tags)
     post
   end
+
+  def self.all
+    @all ||= []
+  end
+
+  def self.by_author(author)
+    all.select { |p| p.author == author }
+  end
+
+  def self.tagged(tag)
+    all.select { |p| p.tags.to_a.include? tag }
+  end
+
+  def publish
+    self.class.all << self
+  end
 end
 
 class Article < Post

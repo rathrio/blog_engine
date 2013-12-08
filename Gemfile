@@ -10,4 +10,5 @@ group :development do
   gem "tux", "~> 0.3.0"
   gem "rspec", "~> 2.14.1"
   gem "shotgun", "~> 0.9"
+  gem "yard", "~> 0.8.7.3"
 end
