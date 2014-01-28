@@ -17,12 +17,6 @@ class Blog < Sinatra::Base
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
-  # Similar to Rails path helper for a show path of a resource. Does not
-  # support namespaces or irregular plurals.
-  def self.post_path(post)
-    "/#{post.class.to_s.downcase}s/#{post.slug}"
-  end
-
   # Parses all markdown files from given path, converts them to `Post`s and
   # generates a `GET` route to display the post.
   def self.parse_and_define_routes_for(what, path)
@@ -35,10 +29,14 @@ class Blog < Sinatra::Base
 
       # Generating routes for single post.
       # e.g. /articles/how_i_met_fuetzgue
-      get post_path(post) do
+      get "/#{what}/#{post.slug}" do
         erb :post, :locals => { :post => post }
       end
     end
+
+    # Sorting
+    post_class.all.sort_by! { |post| post.date }
+    post_class.all.reverse!
   end
 
   parse_and_define_routes_for :articles, "#{root}/articles/*.md"
@@ -101,13 +99,22 @@ class Blog < Sinatra::Base
     #         <a href=\"http://localhost:9393/tags/rails\">rails</a>"
     def linkified_tags(tags)
       tags.to_a.map do |tag|
-        tag_path = url("tags/#{tag}")
-        %Q(<a href="#{tag_path}">#{tag}</a>)
+        link_to tag, "tags/#{tag}"
       end.join ', '
     end
 
+    def link_to(body, source)
+      %Q(<a href="#{url source}">#{body}</a>)
+    end
+
+    # Similar to Rails path helper for a show path of a resource. Does not
+    # support namespaces or irregular plurals.
     def post_path(post)
-      Blog.post_path post
+      "/#{post.class.to_s.downcase}s/#{post.slug}"
+    end
+
+    def author_path(post)
+      "/authors/#{post.author_slug}"
     end
   end
 end
