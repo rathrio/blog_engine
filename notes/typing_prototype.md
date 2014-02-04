@@ -7,9 +7,9 @@ These are the first steps to some kind of typing trainer. The final vision is a
 combat system that takes dynamic natural language as an input and converts it to
 actions (fast). Dynamic because it depends on naming of enemies, commands etc.
 
-In the following demo, it is expected that the user types the word above the
-input field. If the input matches, an alert will be triggered. Reload the page
-to randomise the expected command.
+In the following demo, it is expected that the user types the word that appears
+right above the text field. If the input matches, an alert will be triggered.
+Reload the page to randomise the expected command.
 
 __DEMO__
 
