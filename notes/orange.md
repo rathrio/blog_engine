@@ -3,8 +3,6 @@ author: radi
 date: 2013-12-05
 tags: orange, game
 
-![Orange](http://i.imgur.com/n66gMnI.png?1)
-
 * Textbased
 * Keyboard warriors
 * One text input field in center of display
