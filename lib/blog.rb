@@ -13,23 +13,23 @@ class Blog < Sinatra::Base
   set :root, File.expand_path('../../', __FILE__)
 
   set :authors, []
-  set :tags,    []
   set :markdown, :renderer => HTMLwithPygments,
     :fenced_code_blocks => true, :layout_engine => :erb
 
-  # Parses all markdown files from given path, converts them to `Post`s and
+  # Parses all markdown files for given Post class, converts them to `Post`s and
   # generates a `GET` route to display the post.
-  def self.parse_and_define_routes_for(what, path)
-    post_class = Object.const_get what.to_s.chop.capitalize
+  #
+  # If the Post class is named "Article", this method expects the files to be
+  # in a directory named "articles".
+  def self.parse_and_define_routes_for(post_class, path)
     Dir.glob path do |filename|
       post = post_class.from_file filename
       post.publish
       authors << post.author_slug
-      tags.push *post.tags.to_a
 
       # Generating routes for single post.
       # e.g. /articles/how_i_met_fuetzgue
-      get "/#{what}/#{post.slug}" do
+      get "/#{post_class.pluralized_type_s}/#{post.slug}" do
         erb :post, :locals => { :post => post }
       end
     end
@@ -39,29 +39,29 @@ class Blog < Sinatra::Base
     post_class.all.reverse!
   end
 
-  parse_and_define_routes_for :articles, "#{root}/articles/*.md"
-  parse_and_define_routes_for :notes,    "#{root}/notes/*.md"
-  parse_and_define_routes_for :recipes,  "#{root}/recipes/*.md"
+  def self.define_tag_routes_for(post_class)
+    post_class.tags.each do |tag|
+      get "/#{post_class.pluralized_type_s}/tags/#{tag}" do
+        posts = post_class.tagged tag
+        erb :index, :locals => { :posts => posts }
+      end
+    end
+  end
+
+  # Generating routes for all Post types and their tags.
+  Post.types.each do |type|
+    parse_and_define_routes_for type, "#{root}/#{type.pluralized_type_s}/*.md"
+    define_tag_routes_for type
+  end
 
   authors.uniq!
-  tags.uniq!
 
-  # Generating routes for every author. The respone page will display a list of
+  # Generating routes for every author. The response page will display a list of
   # articles written by that author.
   # e.g. /authors/radi
   authors.each do |author|
     get "/authors/#{author}" do
       articles = Article.by_author author
-      erb :index, :locals => { :posts => articles }
-    end
-  end
-
-  # Generating routes for every tag. The respone page will display a list of
-  # articles tagged with that tag.
-  # e.g. /tags/english
-  tags.each do |tag|
-    get "/tags/#{tag}" do
-      articles = Article.tagged tag
       erb :index, :locals => { :posts => articles }
     end
   end
@@ -95,11 +95,11 @@ class Blog < Sinatra::Base
     #
     #   # Probably in a view:
     #   linkified_tags tags
-    #   # => "<a href=\"http://localhost:9393/tags/ruby\">ruby</a>,
-    #         <a href=\"http://localhost:9393/tags/rails\">rails</a>"
-    def linkified_tags(tags)
-      tags.to_a.map do |tag|
-        link_to tag, "tags/#{tag}"
+    #   # => "<a href=\"http://localhost:9393/articles/tags/ruby\">ruby</a>,
+    #         <a href=\"http://localhost:9393/articles/tags/rails\">rails</a>"
+    def linkified_tags(post)
+      post.tags.to_a.map do |tag|
+        link_to tag, "#{post.pluralized_type_s}/tags/#{tag}"
       end.join ', '
     end
 

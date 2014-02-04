@@ -6,39 +6,71 @@ require 'tag_list'
 class Post < OpenStruct
   extend Conversions
 
-  def self.from_file(filename)
-    meta, content    = File.read(filename).split("\n\n", 2)
-    post             = new YAML.load(meta)
-    post.content     = content
-    post.date        = Time.parse post.date.to_s
-    post.slug        = File.basename(filename, '.md')
-    post.author_slug = post.author.downcase # TODO: #underscore
-    post.tags        = TagList(post.tags)
-    post
-  end
+  class << self
+    # Since we only have three subclasses, we don't necessarily need a
+    # descendants tracker. We just hard code them.
+    def types
+      [Article, Note, Recipe]
+    end
 
-  def self.all
-    @all ||= []
-  end
+    # As you may see, irregular purals are not support per se. Method needs to
+    # be overriden if that's the case.
+    def pluralized_type_s
+      to_s.downcase + 's'
+    end
 
-  def self.by_author(author)
-    all.select { |p| p.author == author }
-  end
+    def from_file(filename)
+      meta, content    = File.read(filename).split("\n\n", 2)
+      post             = new YAML.load(meta)
+      post.content     = content
+      post.date        = Time.parse post.date.to_s
+      post.slug        = File.basename(filename, '.md')
+      post.author_slug = post.author.downcase # TODO: #underscore
+      post.tags        = TagList(post.tags)
+      post
+    end
 
-  def self.tagged(tag)
-    all.select { |p| p.tags.to_a.include? tag }
+    def all
+      @all ||= []
+    end
+
+    def tags
+      @tags ||= TagList([])
+    end
+
+    def tags=(tags)
+      @tags = tags
+    end
+
+    def by_author(author)
+      all.select { |p| p.author == author }
+    end
+
+    def tagged(tag)
+      all.select { |p| p.tags.to_a.include? tag }
+    end
   end
 
   def publish
+    register_tags
+    save
+  end
+
+  def pluralized_type_s
+    self.class.pluralized_type_s
+  end
+
+  private
+
+  def register_tags
+    self.class.tags = self.class.tags + tags
+  end
+
+  def save
     self.class.all << self
   end
 end
 
-class Article < Post
-end
-
-class Note < Post
-end
-
-class Recipe < Post
-end
+Article = Class.new(Post)
+Note    = Class.new(Post)
+Recipe  = Class.new(Post)
