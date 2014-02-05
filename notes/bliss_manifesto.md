@@ -18,5 +18,5 @@ At the time of writing, we have been developing Bliss for about two years and ar
 accordingly inexperienced. Our points may seem very unprofessional and highly
 opinionated. They are to be taken with a grain of salt.
 
-## Index
+### Table of Contents
 1. [About Release Notes](/notes/about_release_notes)

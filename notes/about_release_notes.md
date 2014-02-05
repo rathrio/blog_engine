@@ -22,4 +22,6 @@ and to provide an opportunity to show off our fabulous image editing skills.
 The following screenshot shows an example release note for a version of Bliss that
 includes a lot of features and fixes demanded by Chief Operating Officer Kevin:
 
-![Orange](http://i.imgur.com/hdYN3Io.png)
+![The Kevin Redemption](http://i.imgur.com/hdYN3Io.png)
+
+This note is part of the [Bliss Manifesto](/notes/bliss_manifesto).
