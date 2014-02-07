@@ -1,7 +1,7 @@
-title: I. About Release Notes
+title: I. Release Notes
 author: radi
 date: 2014-02-05
-tags: bm
+tags: bm, bliss
 
 We use [Github](http://www.github.com) to host our remote git repository.
 Everytime we deploy a version of Bliss that we consider to be a minor (or
