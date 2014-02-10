@@ -22,6 +22,10 @@ class Blog < Sinatra::Base
   # If the Post class is named "Article", this method expects the files to be
   # in a directory named "articles".
   def self.parse_and_define_routes_for(post_class, path)
+    get "/#{post_class.type_slug}" do
+      erb :index, :locals => { :posts => post_class.all }
+    end
+
     Dir.glob path do |filename|
       post = post_class.from_file filename
       post.publish
@@ -29,19 +33,17 @@ class Blog < Sinatra::Base
 
       # Generating routes for single post.
       # e.g. /articles/how_i_met_fuetzgue
-      get "/#{post_class.pluralized_type_s}/#{post.slug}" do
+      get "/#{post_class.type_slug}/#{post.slug}" do
         erb :post, :locals => { :post => post }
       end
     end
 
-    # Sorting
-    post_class.all.sort_by! { |post| post.date }
-    post_class.all.reverse!
+    post_class.sort_all!
   end
 
   def self.define_tag_routes_for(post_class)
     post_class.tags.each do |tag|
-      get "/#{post_class.pluralized_type_s}/tags/#{tag}" do
+      get "/#{post_class.type_slug}/tags/#{tag}" do
         posts = post_class.tagged tag
         erb :index, :locals => { :posts => posts }
       end
@@ -50,7 +52,7 @@ class Blog < Sinatra::Base
 
   # Generating routes for all Post types and their tags.
   Post.types.each do |type|
-    parse_and_define_routes_for type, "#{root}/#{type.pluralized_type_s}/*.md"
+    parse_and_define_routes_for type, "#{root}/#{type.type_slug}/*.md"
     define_tag_routes_for type
   end
 
@@ -66,21 +68,9 @@ class Blog < Sinatra::Base
     end
   end
 
-  # Index routes for different posts
-  %w(/ /articles).each do |route|
-    get route do
-      erb :index
-    end
+  get '/' do
+    erb :index
   end
-
-  get '/recipes' do
-    erb :index, :locals => { :posts => Recipe.all }
-  end
-
-  get '/notes' do
-    erb :index, :locals => { :posts => Note.all }
-  end
-
 
   not_found do
     erb :'404'
@@ -99,7 +89,7 @@ class Blog < Sinatra::Base
     #         <a href=\"http://localhost:9393/articles/tags/rails\">rails</a>"
     def linkified_tags(post)
       post.tags.to_a.map do |tag|
-        link_to tag, "#{post.pluralized_type_s}/tags/#{tag}"
+        link_to tag, "#{post.type_slug}/tags/#{tag}"
       end.join ', '
     end
 
@@ -108,9 +98,9 @@ class Blog < Sinatra::Base
     end
 
     # Similar to Rails path helper for a show path of a resource. Does not
-    # support namespaces or irregular plurals.
+    # support namespaces.
     def post_path(post)
-      "/#{post.class.to_s.downcase}s/#{post.slug}"
+      "/#{post.type_slug}/#{post.slug}"
     end
 
     def author_path(post)
