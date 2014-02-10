@@ -10,12 +10,17 @@ class Post < OpenStruct
     # Since we only have three subclasses, we don't necessarily need a
     # descendants tracker. We just hard code them.
     def types
-      [Article, Note, Recipe]
+      [Article, Note, Recipe, BlissManifesto]
+    end
+
+    def sort_all!
+      all.sort_by! { |post| post.date }
+      all.reverse!
     end
 
     # As you may see, irregular purals are not support per se. Method needs to
     # be overriden if that's the case.
-    def pluralized_type_s
+    def type_slug
       to_s.downcase + 's'
     end
 
@@ -56,8 +61,8 @@ class Post < OpenStruct
     save
   end
 
-  def pluralized_type_s
-    self.class.pluralized_type_s
+  def type_slug
+    self.class.type_slug
   end
 
   private
@@ -74,3 +79,13 @@ end
 Article = Class.new(Post)
 Note    = Class.new(Post)
 Recipe  = Class.new(Post)
+
+class BlissManifesto < Post
+  def self.sort_all!
+    all.sort_by! { |post| post.date }
+  end
+
+  def self.type_slug
+    "bliss_manifesto"
+  end
+end

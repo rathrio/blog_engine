@@ -1,9 +1,8 @@
 title: I. Release Notes
 author: radi
-date: 2014-02-05
-tags: bm, bliss
+date: 2014-02-06
 
-We use [Github](http://www.github.com) to host our remote git repository.
+We use [Github](http://www.github.com) to host our remote git repositories.
 Everytime we deploy a version of Bliss that we consider to be a minor (or
 not so minor) release, we create a [release](https://github.com/blog/1547-release-your-software) on Github.
 
@@ -23,5 +22,3 @@ The following screenshot shows an example release note for a version of Bliss th
 includes a lot of features and fixes demanded by Chief Operating Officer Kevin:
 
 ![The Kevin Redemption](http://i.imgur.com/hdYN3Io.png)
-
-This note is part of the [Bliss Manifesto](/notes/bliss_manifesto).
