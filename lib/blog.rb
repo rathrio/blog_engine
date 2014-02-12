@@ -81,10 +81,10 @@ class Blog < Sinatra::Base
     # by a link pointing to the tags path (tags/:tag_name).
     #
     # @example
-    #   tags = TagList.new "ruby, rails"
+    #   article.tags = TagList.new "ruby, rails"
     #
     #   # Probably in a view:
-    #   linkified_tags tags
+    #   linkified_tags article
     #   # => "<a href=\"http://localhost:9393/articles/tags/ruby\">ruby</a>,
     #         <a href=\"http://localhost:9393/articles/tags/rails\">rails</a>"
     def linkified_tags(post)
