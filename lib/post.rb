@@ -7,7 +7,7 @@ class Post < OpenStruct
   extend Conversions
 
   class << self
-    # Since we only have three subclasses, we don't necessarily need a
+    # Since we only have a few subclasses, we don't necessarily need a
     # descendants tracker. We just hard code them.
     def types
       [Article, Note, Recipe, BlissManifesto]
