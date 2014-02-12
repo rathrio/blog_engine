@@ -1,7 +1,7 @@
 title: II. Duck Hunt
 author: radi
 date: 2014-02-07
-tags: ruby, rspec, interface-polymorphism, oop
+tags: ruby, rspec, interface polymorphism, oop
 
 ![Duck Hunt](http://i.imgur.com/ZZc5xEm.png)
 
