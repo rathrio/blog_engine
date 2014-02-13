@@ -1,22 +1,22 @@
 $(document).ready(function() {
-  MagicBox.init();
+  // Init MagicBox search
+  MBSearch.init();
 
   // Fancy timestamps
   $("time.timeago").timeago();
 
-  // Shortcuts
-  // Nav
+  // Nav Shortcuts
   Mousetrap.bind("g n", function() { window.location.href = "/notes" });
   Mousetrap.bind("g b", function() { window.location.href = "/bliss_manifesto" });
   Mousetrap.bind("g a", function() { window.location.href = "/articles" });
   Mousetrap.bind("g r", function() { window.location.href = "/recipes" });
 
-  // Search
-  Mousetrap.bind("/", function() { MagicBox.displaySearchOverlay() });
-  Mousetrap.bind("esc", function() { MagicBox.hideSearchOverlay() });
+  // Search Shortcuts
+  Mousetrap.bind("/", function() { MBSearch.displaySearchOverlay() });
+  Mousetrap.bind("esc", function() { MBSearch.hideSearchOverlay() });
 });
 
-var MagicBox = function() {
+var MBSearch = function() {
   var searchOverlay;
   var searchInput;
 
