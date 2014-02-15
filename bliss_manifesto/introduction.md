@@ -1,6 +1,7 @@
 title: The Bliss Manifesto
 author: radi
 date: 2014-02-05
+tags: bliss manifesto
 
 The Bliss Manifesto is a series of insights on coding my dear friend
 [Fützgü](https://github.com/jugglinghobo) and I gained while working on a
@@ -20,8 +21,8 @@ opinionated. They are to be taken with a grain of salt.
 ### Table of Contents
 1. [Release Notes](/bliss_manifesto/release_notes)
 2. [Duck Hunt](/bliss_manifesto/duck_hunt)
+3. [The Chief Operating Officer](/bliss_manifesto/the_chief_operating_officer)
 <!--
-3. [The Chief Operating Officer]()
 4. [Use Devise]()
 5. [Yes]()
 6. [The Felix Combo]()
