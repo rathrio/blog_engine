@@ -45,7 +45,7 @@ class, like `Order`. This is a fair enough technique to reveal the duck type
 and therefore hidden for developers not familiar with it.
 
 Naming conventions alone cannot expose the public interface of a duck type. They
-merely hint to an existance of it. We advice to always __declare what methods the
+merely hint to an existence of it. We advise to always __declare what methods the
 duck type is expected to respond to__. Write these expectations down in the documentation
 of the method that takes duck types as arguments:
 
