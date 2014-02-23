@@ -3,12 +3,9 @@ author: radi
 date: 2014-02-09
 tags: oop, ruby
 
-Stuff I started writing about ducks.
-
 In the dynamically typed universe of Ruby, code that depends on some objects doesn't
 give a flying fuck about the class or ancestry of them. The only thing that truly
 matters is what messages the objects respond to.
-
 
 I'd like to think of it as code in a
 statically typed languages being a judgemental dickhead.

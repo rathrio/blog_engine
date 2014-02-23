@@ -36,8 +36,8 @@ You will find no class named `Receipt` in Bliss, because `Receipt` is an
 implicit [Interface](http://en.wikipedia.org/wiki/Protocol_(object-oriented_programming))
 we refer to when we talk about things that respond to the
 method `#line_items` (and some other methods we're leaving out for
-simplicity's sake). In Bliss, there are several classes that "act like a
-`Receipt`", like `Invoice`, `CostBreakdown`, or `QuantitySplit`. Naming the
+simplicity's sake). In Bliss, there are several classes that _act like a
+`Receipt`_, like `Invoice`, `CostBreakdown`, or `QuantitySplit`. Naming the
 argument `receipt` indicates that `#convert_line_item_prices` can and should be (re)used with
 __all__ of these objects and not only with instances of __one__ concrete
 class, like `Order`. This is a fair enough technique to reveal the duck type
@@ -180,7 +180,7 @@ duck types in our business models.
 These are some basic techniques we use in Bliss to shorten the length of
 your tedious duck hunt, fellow developer. So if you stumble across our code, pay
 attention to how we named method arguments. If you can't find conrete classes
-that correspondent to the argument name, it's probably a duck type we're
+that correspond to the argument name, it's probably a duck type we're
 referring to. You don't know what methods that duck type responds to? Check the method's
 documentation or search the specs for shared examples that describe that duck
 type.
