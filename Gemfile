@@ -1,8 +1,9 @@
 source "http://rubygems.org"
-ruby '2.0.0'
+ruby '2.1.1'
 
 gem "sinatra", "~> 1.4.4"
-gem "thin", "~> 1.6.1"
+gem "sinatra-contrib", "~> 1.4.2"
+gem "thin", "~> 1.6.2"
 gem "redcarpet", "~> 3.0.0"
 gem "pygments.rb", "~> 0.5.4"
 
