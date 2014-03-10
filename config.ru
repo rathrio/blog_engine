@@ -1,4 +1,7 @@
 $LOAD_PATH.unshift 'lib'
 
 require 'blog'
-run Blog
+require 'gossip'
+
+map('/') { run Blog }
+map('/gossip') { run Gossip }
