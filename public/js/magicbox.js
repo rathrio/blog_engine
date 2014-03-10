@@ -10,6 +10,7 @@ $(document).ready(function() {
   Mousetrap.bind("g b", function() { window.location.href = "/bliss_manifesto" });
   Mousetrap.bind("g a", function() { window.location.href = "/articles" });
   Mousetrap.bind("g r", function() { window.location.href = "/recipes" });
+  Mousetrap.bind("g g", function() { window.location.href = "/gossip" });
 
   // Search Shortcuts
   Mousetrap.bind("/", function() { MBSearch.displaySearchOverlay() });

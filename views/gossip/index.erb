@@ -1,0 +1,21 @@
+<pre id='gossip'></pre>
+
+</br>
+
+<form id='gossipform'>
+  <input id='msg' placeholder='type message...' autocomplete="off" />
+</form>
+
+<script>
+  // reading
+  var es = new EventSource('/gossip/stream');
+  es.onmessage = function(e) { $('#gossip').append(e.data + "\n") };
+
+  // writing
+  $("#gossipform").on("submit", function(e) {
+    var message = $('#msg').val();
+    $.post('/gossip', { msg: "<%= user %>: " + $('#msg').val() });
+    $('#msg').val(''); $('#msg').focus();
+    e.preventDefault();
+  });
+</script>
