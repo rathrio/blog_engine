@@ -23,11 +23,3 @@ opinionated. They are to be taken with a grain of salt.
 2. [Duck Hunt](/bliss_manifesto/duck_hunt)
 3. [The Chief Operating Officer](/bliss_manifesto/the_chief_operating_officer)
 4. [Why](bliss_manifesto/why)
-<!--
-4. [Use Devise]()
-5. [Yes]()
-6. [The Felix Combo]()
-7. [Levolution]()
-8. [Anorexia]()
-9. [Migrations]()
--->
