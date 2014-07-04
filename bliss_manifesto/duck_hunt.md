@@ -73,7 +73,7 @@ end
 # but we started using it for new projects.
 ```
 
-This way, other developers know exatly what is required by
+This way, other developers know exactly what is required by
 `#convert_line_item_prices` even when they have never heard of `Receipt` before.
 
 
