@@ -77,7 +77,7 @@ This way, other developers know exactly what is required by
 `#convert_line_item_prices` even when they have never heard of `Receipt` before.
 
 
-Naming convetions and documentation aside, nothing exposes a duck type more than
+Naming conventions and documentation aside, nothing exposes a duck type more than
 an actual class or module that defines it, so many suggest doing something
 like this:
 
