@@ -22,11 +22,7 @@ opinionated. They are to be taken with a grain of salt.
 1. [Release Notes](/bliss_manifesto/release_notes)
 2. [Duck Hunt](/bliss_manifesto/duck_hunt)
 3. [The Chief Operating Officer](/bliss_manifesto/the_chief_operating_officer)
-4. [Use Devise](/bliss_manifesto/use_devise)
-  <!--
-5. [Yes]()
-6. [The Felix Combo]()
-7. [Levolution]()
-8. [Anorexia]()
-9. [Migrations]()
--->
+4. [Why](bliss_manifesto/why)
+5. [When Things Go Wrong](bliss_manifesto/when_things_go_wrong)
+6. [Searches](bliss_manifesto/searches)
+7. [Use Devise](/bliss_manifesto/use_devise)
