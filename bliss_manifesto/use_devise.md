@@ -17,7 +17,7 @@ a
 #### Backstory
 When [Radi](https://github.com/rathrio) and I first started working at [Fadendaten](http://www.fadendaten.ch),
 our first assignment was to build a simple Customer Relationship Management app.
-Since none of us had any practical experience with ruby/rails up to this point,
+Since neither of us had any practical experience with ruby/rails up to this point,
 the project included a lot of 'learning by doing'. We were also offered help by our teammate [Felix](https://www.github.com/flangenegger)
 and our boss, [Chrigu](https://www.github.com/derwiedmer),
 and had the possibility to inspect and adopt similar features from Bliss,
@@ -39,22 +39,29 @@ Now, if you're a new developer, and you ask your clearly more informed colleague
 for a solution to a problem, and they tell you to use an external library, or a gem,
 do you read its documentation? Do you google for similar use cases?
 
-![nope](http://i.imgur.com/qCSKNpZ.gif)
+![nope shaking head](http://i.imgur.com/qCSKNpZ.gif)
 
-What we did instead is this:
+__Nope!__
 
-* add devise to our Gemfile
-* remove our own user resource because it was not compliant with devise's expectations and we were too inexperienced to make the necessary changes by hand
-* fight with a very complicated pre-made solution which was too bloated for what we needed
+Instead, we instantly started integrating devise into our project, and were glad because
+we could move on to other tasks and let this external 'super solution' do the job for us.
 
-Some excerpts:
+![devise is good commits](http://i.imgur.com/S5k66r8.png)
 
-![devise commits](http://i.imgur.com/S5k66r8.png)
+When we finally realised that devise has nothing to do with authorisation,
+we had already replaced about one third of our codebase with it.
+What followed can best be described as a collective facepalm.
+
+![devise is bad commits](http://i.imgur.com/CHq6yoH.png)
 
 
+We had spent two days replacing our lightweight, easy-to-understand authentication
+with this bloated and complicated gem. I'm not sure if we even kept using devise after
+figuring out what it is intended for, but that's beside the point. What is really interesting
+is __how could this happen?__
 
-
-
+#### Why would you even do that?!
+The most obvious argument for why we did this is clearly: *our mentors told us to*.
 
 
 
