@@ -1,4 +1,4 @@
-title: V. When things go wrong
+title: V. When Things Go Wrong
 author: radi
 date: 2014-07-08
 

@@ -9,7 +9,9 @@
         <%= post.date.strftime "%Y/%m/%d/" %>
       </time>
       by <%= link_to post.author, author_path(post) %>
-      about <%= linkified_tags post %>
+      <% if post.tags.any? %>
+        about <%= linkified_tags post %>
+      <% end %>
     </p>
   </header>
   <section class="content">
