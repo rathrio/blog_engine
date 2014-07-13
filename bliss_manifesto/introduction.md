@@ -25,3 +25,4 @@ opinionated. They are to be taken with a grain of salt.
 4. [Why](bliss_manifesto/why)
 5. [When Things Go Wrong](bliss_manifesto/when_things_go_wrong)
 6. [Searches](bliss_manifesto/searches)
+6. [Hide Yo Functions](bliss_manifesto/hide_yo_functions)
