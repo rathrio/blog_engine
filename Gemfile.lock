@@ -5,6 +5,7 @@ GEM
     daemons (1.1.9)
     diff-lcs (1.2.5)
     eventmachine (1.0.3)
+    kgio (2.9.2)
     posix-spawn (0.3.8)
     pygments.rb (0.6.0)
       posix-spawn (~> 0.3.6)
@@ -14,6 +15,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.13.0)
     redcarpet (3.1.2)
     ripl (0.7.1)
       bond (~> 0.5.1)
@@ -51,6 +53,10 @@ GEM
       ripl-multi_line (>= 0.2.4)
       ripl-rack (>= 0.2.0)
       sinatra (>= 1.2.1)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     yajl-ruby (1.1.0)
     yard (0.8.7.4)
 
@@ -65,4 +71,5 @@ DEPENDENCIES
   sinatra (~> 1.4.5)
   thin (~> 1.6.2)
   tux (~> 0.3.0)
+  unicorn (~> 4.8.3)
   yard (~> 0.8.7.4)
