@@ -19,7 +19,7 @@ functions. Sometimes anonymous:
 
   $(document).on('ready pjax:success', function() {
     $(document).off("click", handleClickOnSomeDiv);
-    $(document).on("click", ".someDiv",handleClickOnSomeDiv);
+    $(document).on("click", ".someDiv", handleClickOnSomeDiv);
   })
 })();
 ```
