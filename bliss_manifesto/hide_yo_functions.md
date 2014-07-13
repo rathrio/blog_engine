@@ -35,8 +35,8 @@ Styles = function() {
   }
 
   return {
-    // Usually called initialize, because we do some setup like attaching a
-    // bunch of handlers etc.
+    // We usually call these functions "initialize", because we do some setup
+    // like attaching a bunch of handlers etc.
     publicFunction: function() {
       var bla = privateFunction();
       // ...
