@@ -14,7 +14,7 @@ class Blog < Sinatra::Base
 
   set :authors, []
   set :markdown, :renderer => HTMLwithPygments,
-    :fenced_code_blocks => true, :layout_engine => :erb
+    :fenced_code_blocks => true, :layout_engine => :erb, :autolink => true
 
   # Parses all markdown files for given Post class, converts them to `Post`s and
   # generates a `GET` route to display the post.
