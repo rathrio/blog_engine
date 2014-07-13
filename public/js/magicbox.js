@@ -1,20 +1,25 @@
 $(document).ready(function() {
   // Init MagicBox search
-  MBSearch.init();
-
-  // Fancy timestamps
-  $("time.timeago").timeago();
+  //MBSearch.init();
 
   // Nav Shortcuts
-  Mousetrap.bind("g n", function() { window.location.href = "/notes" });
-  Mousetrap.bind("g b", function() { window.location.href = "/bliss_manifesto" });
-  Mousetrap.bind("g a", function() { window.location.href = "/articles" });
-  Mousetrap.bind("g r", function() { window.location.href = "/recipes" });
+  Mousetrap.bind("g n", function() { $.pjax({url: "/notes", container: '#container_content'}) });
+  Mousetrap.bind("g b", function() { $.pjax({url: "/bliss_manifesto", container: '#container_content'}) });
+  Mousetrap.bind("g a", function() { $.pjax({url: "/articles", container: '#container_content'}) });
+  Mousetrap.bind("g r", function() { $.pjax({url: "/recipes", container: '#container_content'}) });
 
   // Search Shortcuts
   Mousetrap.bind("/", function() { MBSearch.displaySearchOverlay() });
   Mousetrap.bind("esc", function() { MBSearch.hideSearchOverlay() });
+
+  // Pjax Setup
+  $(document).pjax('a', '#container_content');
 });
+
+$(document).on("ready pjax:success", function() {
+  // Fancy timestamps
+  $("time.timeago").timeago();
+})
 
 var MBSearch = function() {
   var searchOverlay;

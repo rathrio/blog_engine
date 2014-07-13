@@ -23,7 +23,7 @@ class Blog < Sinatra::Base
   # in a directory named "articles".
   def self.parse_and_define_routes_for(post_class, path)
     get "/#{post_class.type_slug}" do
-      erb :index, :locals => { :posts => post_class.all }
+      erb :index, :locals => { :posts => post_class.all }, :layout => !pjax?
     end
 
     Dir.glob path do |filename|
@@ -34,7 +34,7 @@ class Blog < Sinatra::Base
       # Generating routes for single post.
       # e.g. /articles/how_i_met_fuetzgue
       get "/#{post_class.type_slug}/#{post.slug}" do
-        erb :post, :locals => { :post => post }
+        erb :post, :locals => { :post => post }, :layout => !pjax?
       end
     end
 
@@ -45,7 +45,7 @@ class Blog < Sinatra::Base
     post_class.tags.each do |tag|
       get "/#{post_class.type_slug}/tags/#{tag}" do
         posts = post_class.tagged tag
-        erb :index, :locals => { :posts => posts }
+        erb :index, :locals => { :posts => posts }, :layout => !pjax?
       end
     end
   end
@@ -64,16 +64,16 @@ class Blog < Sinatra::Base
   authors.each do |author|
     get "/authors/#{author}" do
       articles = Article.by_author author
-      erb :index, :locals => { :posts => articles }
+      erb :index, :locals => { :posts => articles }, :layout => !pjax?
     end
   end
 
   get '/' do
-    erb :index
+    erb :index, :layout => !pjax?
   end
 
   not_found do
-    erb :'404'
+    erb :'404', :layout => !pjax?
   end
 
   helpers do
@@ -105,6 +105,10 @@ class Blog < Sinatra::Base
 
     def author_path(post)
       "/authors/#{post.author_slug}"
+    end
+
+    def pjax?
+      !!(env['HTTP_X_PJAX'] && !params[:layout])
     end
   end
 end
