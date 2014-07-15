@@ -18,7 +18,7 @@ class Post < OpenStruct
       all.reverse!
     end
 
-    # As you may see, irregular purals are not support per se. Method needs to
+    # Irregular purals are not supported per se. Method needs to
     # be overriden if that's the case.
     def type_slug
       to_s.downcase + 's'
@@ -30,7 +30,7 @@ class Post < OpenStruct
       post.content     = content
       post.date        = Time.parse post.date.to_s
       post.slug        = File.basename(filename, '.md')
-      post.author_slug = post.author.downcase # TODO: #underscore
+      post.author_slug = post.author.downcase
       post.tags        = TagList(post.tags)
       post
     end

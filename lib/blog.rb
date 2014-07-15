@@ -69,7 +69,7 @@ class Blog < Sinatra::Base
   end
 
   get '/' do
-    erb :index, :layout => !pjax?
+    erb :home, :layout => !pjax?
   end
 
   not_found do
