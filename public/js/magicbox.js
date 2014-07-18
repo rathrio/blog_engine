@@ -23,5 +23,5 @@
   $(document).on("ready pjax:success", function() {
     // Fancy timestamps
     $("time.timeago").timeago();
-  })
+  });
 })();

@@ -72,6 +72,12 @@ class Blog < Sinatra::Base
     erb :home, :layout => !pjax?
   end
 
+  get '/search' do
+    tag = params[:q]
+    posts = Post.tagged tag
+    erb :index, :locals => { :posts => posts }, :layout => !pjax?
+  end
+
   not_found do
     erb :'404', :layout => !pjax?
   end

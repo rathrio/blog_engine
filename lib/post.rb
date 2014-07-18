@@ -36,7 +36,14 @@ class Post < OpenStruct
     end
 
     def all
+      if self == Post # Guard for Subclasses
+        return types.map(&:all).inject(&:+)
+      end
       @all ||= []
+    end
+
+    def count
+      all.count
     end
 
     def tags

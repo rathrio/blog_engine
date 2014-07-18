@@ -23,6 +23,13 @@
   <body>
     <div id="container">
       <%= erb :header %>
+
+      <div id=mb-search>
+        <form id="mb-search-form" method="get" action="/search">
+          <input type="text" name="q" id="mb-search-input">
+        </form>
+      </div>
+
       <div id="container_content">
         <%= yield %>
       </div>
