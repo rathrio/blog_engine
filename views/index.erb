@@ -1,4 +1,3 @@
-<% posts ||= Article.all %>
 <% posts.each do |post| %>
   <%= erb :post, :locals => { :post => post } %>
   <hr/>

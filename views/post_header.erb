@@ -1,0 +1,15 @@
+<header>
+  <h2>
+    <%= link_to post.title, post_path(post) %>
+  </h2>
+  <p id="post-meta">
+    posted
+    <time class="timeago" datetime="<%= post.date.xmlschema %>">
+      <%= post.date.strftime "%Y/%m/%d/" %>
+    </time>
+    by <%= link_to post.author, author_path(post) %>
+    <% if post.tags.any? %>
+      about <%= linkified_tags post %>
+    <% end %>
+  </p>
+</header>

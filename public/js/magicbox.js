@@ -20,8 +20,23 @@
   Mousetrap.bind("j", function() { window.scrollBy(0, 50); });
   Mousetrap.bind("k", function() { window.scrollBy(0, -50); });
 
+  var toggleSearch = function() {
+    $("#mb-search").toggle();
+    $("#mb-search-input").select();
+  }
+
+  var submitSearch = function(event) {
+    $.pjax.submit(event, "#container_content");
+  }
+
   $(document).on("ready pjax:success", function() {
     // Fancy timestamps
     $("time.timeago").timeago();
+
+    $("#mb-search-trigger").off("click", toggleSearch);
+    $("#mb-search-trigger").on("click", toggleSearch);
+
+    $("#mb-search-form").off("submit", submitSearch);
+    $("#mb-search-form").on("submit", submitSearch);
   });
 })();
