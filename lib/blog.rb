@@ -73,9 +73,9 @@ class Blog < Sinatra::Base
   end
 
   get '/search' do
-    tag = params[:q]
-    posts = Post.tagged tag
-    erb :search_results, :locals => { :posts => posts }, :layout => !pjax?
+    query = params[:q].to_s.downcase
+    posts = Post.tagged query
+    erb :search, :locals => { :posts => posts, :query => query }, :layout => !pjax?
   end
 
   not_found do

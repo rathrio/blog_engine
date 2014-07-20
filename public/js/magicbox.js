@@ -12,6 +12,7 @@
   Mousetrap.bind("g b", function() { redirectTo('/bliss_manifesto'); });
   Mousetrap.bind("g a", function() { redirectTo('/articles'); });
   Mousetrap.bind("g r", function() { redirectTo('/recipes'); });
+  Mousetrap.bind("g s", function() { redirectTo('/search'); });
   Mousetrap.bind("g h", function() { redirectTo('/'); });
 
   // Scrolling Shortcuts
@@ -20,9 +21,8 @@
   Mousetrap.bind("j", function() { window.scrollBy(0, 50); });
   Mousetrap.bind("k", function() { window.scrollBy(0, -50); });
 
-  var toggleSearch = function() {
-    $("#mb-search").toggle();
-    $("#mb-search-input").select();
+  var redirectToSearch = function() {
+    redirectTo('/search');
   }
 
   var submitSearch = function(event) {
@@ -33,10 +33,12 @@
     // Fancy timestamps
     $("time.timeago").timeago();
 
-    $("#mb-search-trigger").off("click", toggleSearch);
-    $("#mb-search-trigger").on("click", toggleSearch);
+    $("#mb-search-link").off("click", redirectToSearch);
+    $("#mb-search-link").on("click", redirectToSearch);
 
     $("#mb-search-form").off("submit", submitSearch);
     $("#mb-search-form").on("submit", submitSearch);
+
+    $("#mb-search-input").select();
   });
 })();

@@ -1,0 +1,13 @@
+<div id=mb-search>
+  <form id="mb-search-form" method="get" action="/search">
+    <input type="text" name="q" id="mb-search-input" placeholder="Search by tag" value=<%= query %>>
+  </form>
+</div>
+
+<% if posts.any? %>
+
+  <% posts.each do |post| %>
+    <%= erb :post_header, :locals => { :post => post}  %>
+  <% end %>
+
+<% end %>

@@ -69,7 +69,7 @@ header a:hover {
 	margin: 30px auto;
 }
 
-#mb-search-trigger {
+#mb-search-link {
   position: absolute;
   top: 8px;
   right: 13px;
@@ -88,13 +88,12 @@ header a:hover {
   box-shadow: 0px 0px 5px white;
 }
 
-#mb-search-trigger:hover {
+#mb-search-link:hover {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
 #mb-search {
-  display: none;
   width: 700px;
   max-width: 93%;
   text-align: center;
