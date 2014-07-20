@@ -8,12 +8,16 @@
   $(document).pjax('a', '#container_content');
 
   // Nav Shortcuts
+  Mousetrap.bind("g h", function() { redirectTo('/'); });
   Mousetrap.bind("g n", function() { redirectTo('/notes'); });
   Mousetrap.bind("g b", function() { redirectTo('/bliss_manifesto'); });
   Mousetrap.bind("g a", function() { redirectTo('/articles'); });
   Mousetrap.bind("g r", function() { redirectTo('/recipes'); });
-  Mousetrap.bind("g s", function() { redirectTo('/search'); });
-  Mousetrap.bind("g h", function() { redirectTo('/'); });
+
+  // So many options...
+  Mousetrap.bind("g s", function() { redirectToSearch(); });
+  Mousetrap.bind("s", function() { redirectToSearch(); });
+  Mousetrap.bind("/", function() { redirectToSearch(); });
 
   // Scrolling Shortcuts
   Mousetrap.bind("g g", function() { window.scrollTo(0, 0); });
