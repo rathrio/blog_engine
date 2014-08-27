@@ -8,9 +8,9 @@ variable have such a stupid name?" or "Why don't I look for another job already?
 may be fairly common utterances in the troubled mind of your dear coworker.
 
 To make life easier, we propose that you always keep these questions in mind
-while writing commit messages, documentation, guides and so on, especially you're good
-judgment tells you that things may not be inherently clear to anybody else than
-yourself.
+while writing commit messages, documentation, guides and so on, especially when
+you're good judgment tells you that things may not be inherently clear to anybody
+else than yourself.
 
 Say you're composing a commit message for a bug fix, instead of:
 
@@ -33,6 +33,9 @@ Not only does this message provide a link to the initial bug report, but also
 adds a short summary describing why this fix was necessary. For your coworker,
 this might immensely shorten the time spend trying to comprehend your changes,
 for example, when he/she has to do a code review. And it also reduces the amount
-  of interruptions and stupid questions you get while trying to get shit done.
+  of interruptions and stupid questions you get while trying to get things done.
+
+Same thing applies to documentation. Try to describe the purpose of a method or
+class, not what it does.
 
 WIP

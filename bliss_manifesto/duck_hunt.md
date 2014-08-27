@@ -6,7 +6,7 @@ tags: ruby, rspec, interface polymorphism, oop
 ![Duck Hunt](http://i.imgur.com/ZZc5xEm.png)
 
 [Duck typing](http://en.wikipedia.org/wiki/Duck_typing) is a really powerful
-concept, but let's be honest: It's a pain in the pooper to identify implicit
+concept, but let's be honest: It's a pain in the ass to identify implicit
 interfaces in code you haven't written yourself or just haven't looked at for a
 while. In Bliss, we simplify the duck hunt by following __naming conventions__, writing
 smart __documentation__ and using the __shared examples__ feature of Rspec.
@@ -34,7 +34,7 @@ end
 
 You will find no class named `Receipt` in Bliss, because `Receipt` is an
 implicit [Interface](http://en.wikipedia.org/wiki/Protocol_(object-oriented_programming))
-we refer to when we talk about things that respond to the
+we refer to when we talk about objects that respond to the
 method `#line_items` (and some other methods we're leaving out for
 simplicity's sake). In Bliss, there are several classes that _act like a
 `Receipt`_, like `Invoice`, `CostBreakdown`, or `QuantitySplit`. Naming the
@@ -68,9 +68,6 @@ def convert_line_item_prices(receipt)
   line_items = receipt.line_items
   # converting of line_items ensues...
 end
-
-# As a side note, we don't use YARD in Bliss,
-# but we started using it for new projects.
 ```
 
 This way, other developers know exactly what is required by
@@ -132,7 +129,7 @@ end
 ```
 
 In Bliss, we try to avoid this. We only extract duck types to a module if
-the implementation can be shared. It's not very Ruby-like anyway. As an alternative, we
+the implementation can be shared. As an alternative, we
 propose to write __[shared examples](https://www.relishapp.com/rspec/rspec-core/docs/example-groups/shared-examples)
 that describe the public interface__ and then include these examples to all
 object specs that behave like the described duck type:
