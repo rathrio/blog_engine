@@ -6,10 +6,11 @@ body, p, ol, ul, li { font-size: 17px; }
 
 pre {
   font-size: 14px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
+  padding: 16px;
   overflow: auto;
-  padding: 6px 10px;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
   border-radius: 3px;
 }
 
