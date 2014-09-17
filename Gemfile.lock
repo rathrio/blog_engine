@@ -6,6 +6,7 @@ GEM
     diff-lcs (1.2.5)
     eventmachine (1.0.3)
     kgio (2.9.2)
+    newrelic_rpm (3.9.4.245)
     posix-spawn (0.3.8)
     pygments.rb (0.6.0)
       posix-spawn (~> 0.3.6)
@@ -64,6 +65,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  newrelic_rpm
   pygments.rb (~> 0.6.0)
   redcarpet (~> 3.1.2)
   rspec (~> 3.0.0)
