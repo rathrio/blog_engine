@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-ruby '2.1.1'
+ruby '2.1.3'
 
 gem 'sinatra', '~> 1.4.5'
 gem "thin", "~> 1.6.2"
