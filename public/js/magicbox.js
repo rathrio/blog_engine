@@ -4,7 +4,7 @@
   }
 
   // Pjax Setup
-  $.pjax.defaults.timeout = 3000;
+  $.pjax.defaults.timeout = 5000;
   $(document).pjax('a', '#container_content');
 
   // Nav Shortcuts
