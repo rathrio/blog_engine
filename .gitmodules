@@ -1,3 +1,0 @@
-[submodule "articles"]
-	path = articles
-	url = git://github.com/rathrio/articles.git
